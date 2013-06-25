@@ -49,6 +49,82 @@
                 android:src="@drawable/ic_btn_send"/>
         </LinearLayout>
 
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Card Actions"
+                android:id="@+id/textView"
+                style="?android:listSeparatorTextViewStyle"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:id="@+id/deleteCheckBox"
+                android:layout_gravity="left|center_vertical"
+                android:checked="true"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share"
+                android:id="@+id/shareCheckBox"
+                android:layout_gravity="left|center_vertical"
+                android:checked="false"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Read Aloud"
+                android:id="@+id/readAloudCheckBox"
+                android:layout_gravity="left|center_vertical"
+                android:checked="false"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toggle Pinned"
+                android:id="@+id/togglePinnedCheckBox"
+                android:layout_gravity="left|center_vertical"
+                android:checked="false"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voice Call"
+                android:id="@+id/voiceCallCheckBox"
+                android:layout_gravity="left|center_vertical"
+                android:checked="false"
+                android:enabled="false"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Navigate"
+                android:id="@+id/navigateCheckBox"
+                android:layout_gravity="left|center_vertical"
+                android:checked="false"
+                android:enabled="false"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reply"
+                android:id="@+id/replyCheckBox"
+                android:layout_gravity="left|center_vertical"
+                android:checked="false"
+                android:enabled="false"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reply All"
+                android:id="@+id/replyAllCheckBox"
+                android:layout_gravity="left|center_vertical"
+                android:checked="false"
+                android:enabled="false"/>
+
     </LinearLayout>
 
     <View

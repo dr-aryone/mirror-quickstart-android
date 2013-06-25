@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.common.AccountPicker;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -156,9 +158,69 @@ public class MainActivity extends Activity {
                     JSONObject notification = new JSONObject();
                     notification.put("level", "DEFAULT"); // Play a chime
 
+                    JSONArray menuItems = new JSONArray();
+                    JSONObject menuAction;
+
+                    if (((CheckBox) findViewById(R.id.deleteCheckBox)).isChecked())
+                    {
+                        menuAction = new JSONObject();
+                        menuAction.put("action", "DELETE");
+                        menuItems.put(menuAction);
+                    }
+
+                    if (((CheckBox) findViewById(R.id.shareCheckBox)).isChecked())
+                    {
+                        menuAction = new JSONObject();
+                        menuAction.put("action", "SHARE");
+                        menuItems.put(menuAction);
+                    }
+
+                    if (((CheckBox) findViewById(R.id.readAloudCheckBox)).isChecked())
+                    {
+                        menuAction = new JSONObject();
+                        menuAction.put("action", "READ_ALOUD");
+                        menuItems.put(menuAction);
+                    }
+
+                    if (((CheckBox) findViewById(R.id.togglePinnedCheckBox)).isChecked())
+                    {
+                        menuAction = new JSONObject();
+                        menuAction.put("action", "TOGGLE_PINNED");
+                        menuItems.put(menuAction);
+                    }
+
+                    if (((CheckBox) findViewById(R.id.voiceCallCheckBox)).isChecked())
+                    {
+                        menuAction = new JSONObject();
+                        menuAction.put("action", "VOICE_CALL");
+                        menuItems.put(menuAction);
+                    }
+
+                    if (((CheckBox) findViewById(R.id.navigateCheckBox)).isChecked())
+                    {
+                        menuAction = new JSONObject();
+                        menuAction.put("action", "NAVIGATE");
+                        menuItems.put(menuAction);
+                    }
+
+                    if (((CheckBox) findViewById(R.id.replyCheckBox)).isChecked())
+                    {
+                        menuAction = new JSONObject();
+                        menuAction.put("action", "REPLY");
+                        menuItems.put(menuAction);
+                    }
+
+                    if (((CheckBox) findViewById(R.id.replyAllCheckBox)).isChecked())
+                    {
+                        menuAction = new JSONObject();
+                        menuAction.put("action", "REPLY_ALL");
+                        menuItems.put(menuAction);
+                    }
+
                     JSONObject json = new JSONObject();
                     json.put("text", message);
                     json.put("notification", notification);
+                    json.put("menuItems", menuItems);
 
                     MirrorApiClient client = MirrorApiClient.getInstance(this);
                     client.createTimelineItem(mAuthToken, json, new MirrorApiClient.Callback() {
