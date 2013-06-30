@@ -5,9 +5,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.widget.TextView;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -53,6 +56,10 @@ public class MainActivity extends Activity {
     private Button mExpireTokenButton;
     private ImageButton mNewCardButton;
     private EditText mNewCardEditText;
+    private MenuItem mHtmlMenuItem;
+
+
+    private boolean htmlMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +73,10 @@ public class MainActivity extends Activity {
         mExpireTokenButton = (Button) findViewById(R.id.oauth_expire_button);
         mNewCardButton = (ImageButton) findViewById(R.id.new_card_button);
         mNewCardEditText = (EditText) findViewById(R.id.new_card_message);
+        mHtmlMenuItem = (MenuItem) findViewById(R.id.action_settings);
+
+        mNewCardEditText.setHorizontallyScrolling(true);
+
 
         // Restore any saved instance state
         if (savedInstanceState != null) {
@@ -118,6 +129,37 @@ public class MainActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                if (htmlMode)
+                {
+                    htmlMode = false;
+                    ((TextView) findViewById(R.id.cardMessageTextView)).setText("Add Card to Timeline");
+                    mNewCardEditText.setHint("Message");
+                    //mNewCardEditText.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+                    //mNewCardEditText.setSingleLine(true);
+                    //mNewCardEditText.setLines(1);
+                    //mNewCardEditText.setMaxLines(1);
+                    mNewCardEditText.setText("Hello World!");
+                } else {
+                    htmlMode = true;
+                    ((TextView) findViewById(R.id.cardMessageTextView)).setText("Add Card to Timeline (HTML)");
+                    mNewCardEditText.setHint("Don't forget to set the font color and size");
+                    //mNewCardEditText.setSingleLine(false);
+                    //mNewCardEditText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                    //mNewCardEditText.setLines(5);
+                    mNewCardEditText.setText("<div id='content' style='color:white;font-size:42;'>\nHello World!\n</div>");
+
+
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -218,7 +260,11 @@ public class MainActivity extends Activity {
                     }
 
                     JSONObject json = new JSONObject();
-                    json.put("text", message);
+                    if (htmlMode)
+                        json.put("html", message);
+                    else
+                        json.put("text", message);
+
                     json.put("notification", notification);
                     json.put("menuItems", menuItems);
 

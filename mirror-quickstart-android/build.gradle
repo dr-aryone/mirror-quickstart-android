@@ -11,7 +11,7 @@ apply plugin: 'android'
 dependencies {
     compile project(':libraries:GooglePlayServices')
     compile files('libs/android-support-v4.jar')
-    compile files('../libraries/GooglePlayServices/libs/google-play-services.jar')
+    
 
 }
 

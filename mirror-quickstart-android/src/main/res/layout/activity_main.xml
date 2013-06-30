@@ -16,11 +16,32 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin">
 
-        <TextView
-            style="?android:listSeparatorTextViewStyle"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Card to Timeline"/>
+            android:layout_height="wrap_content">
+	    
+	    <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Card to Timeline"
+                android:id="@+id/cardMessageTextView"
+                android:layout_weight="1"/>
+	    
+	    <ImageButton
+                android:id="@+id/new_card_button"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="4dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Send"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_btn_send"
+                android:layout_gravity="right|top"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -33,20 +54,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:inputType="textCapSentences"
-                android:maxLines="1"
-                android:hint="Message"/>
+                android:hint="Message"
+                android:longClickable="true"
+                android:gravity="left|top"
+                android:editable="true"
+                android:capitalize="sentences"
+                android:autoText="false"
+                android:textAlignment="gravity"
+ 		android:scrollbars="vertical"
+        android:inputType="textMultiLine|textCapSentences"
+        android:lines="5"/>
 
-            <ImageButton
-                android:id="@+id/new_card_button"
-                style="?android:borderlessButtonStyle"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="4dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="Send"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_btn_send"/>
         </LinearLayout>
 
         <TextView
