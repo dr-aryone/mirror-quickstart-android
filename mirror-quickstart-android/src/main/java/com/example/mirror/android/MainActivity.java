@@ -138,21 +138,21 @@ public class MainActivity extends Activity {
                 if (htmlMode)
                 {
                     htmlMode = false;
-                    ((TextView) findViewById(R.id.cardMessageTextView)).setText("Add Card to Timeline");
-                    mNewCardEditText.setHint("Message");
+                    ((TextView) findViewById(R.id.cardMessageTextView)).setText(getString(R.string.textMessage));
+                    mNewCardEditText.setHint(getString(R.string.textHint));
                     //mNewCardEditText.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
                     //mNewCardEditText.setSingleLine(true);
                     //mNewCardEditText.setLines(1);
                     //mNewCardEditText.setMaxLines(1);
-                    mNewCardEditText.setText("Hello World!");
+                    mNewCardEditText.setText(getString(R.string.textTemplate));
                 } else {
                     htmlMode = true;
-                    ((TextView) findViewById(R.id.cardMessageTextView)).setText("Add Card to Timeline (HTML)");
-                    mNewCardEditText.setHint("Don't forget to set the font color and size");
+                    ((TextView) findViewById(R.id.cardMessageTextView)).setText(getString(R.string.htmlMessage));
+                    mNewCardEditText.setHint(getString(R.string.htmlHint));
                     //mNewCardEditText.setSingleLine(false);
                     //mNewCardEditText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
                     //mNewCardEditText.setLines(5);
-                    mNewCardEditText.setText("<div id='content' style='color:white;font-size:42;'>\nHello World!\n</div>");
+                    mNewCardEditText.setText(getString(R.string.htmlTemplate));
 
 
                 }
